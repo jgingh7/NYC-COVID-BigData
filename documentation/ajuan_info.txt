@@ -1,0 +1,48 @@
+Project description:
+I have chosen to focus on investigating the impact of Covid-19 on the
+general US economy and its impact on the local NYC economy. Its spread has 
+the left national economy and businesses counting the costs, as governments 
+struggle with new lockdown measures to tackle the spread of the virus.
+The S&P 500, or simply the S&P, is a stock market index that measures the stock 
+performance of 500 large companies listed on stock exchanges in the United States. 
+The S&P saw a huge fall as the number of Covid-19 cases grew in the first months
+of the crisis. I will be comparing the performance of S&P 500 over the 2019 & 2020 years
+and it's correlation the number of positive Covid cases in NYC.
+The local NYC economic sector has been hit hard, with thousands of jobs and many 
+companies going bankrupt. I will investigate the impact of Covid-19 by analyzing
+a dataset from NYC Open Data that tracks the legally operating businesses in New York City.
+
+List of datasets:
+1. Name: COVID-19 Outcomes by Testing Cohorts: Cases, Hospitalizations, and Deaths
+   Source: https://data.cityofnewyork.us/Health/COVID-19-Outcomes-by-Testing-Cohorts-Cases-Hospita/cwmx-mvra
+   Description: The dataset shows outcomes (confirmed cases, hospitalizations, and deaths) for cohorts defined by each date of specimen collection (specimen_date).
+
+2. Name: Legal Operating Businesses
+   Source: https://data.cityofnewyork.us/Business/Legally-Operating-Businesses/w7w3-xahh
+   Description: This data set features businesses/individuals holding a DCA license so that
+   they may legally operate in New York City. Note: Sightseeing guides and temporary street 
+   fair vendors are not included in this data set.
+
+3. Name: S&P500 Daily Open & Close price
+   Source: https://polygon.io/
+   Description: Aggregate bars for a S&P 500 index over a given date range.
+   
+Data Cleaning and Integration:
+COVID-19 Outcomes by Testing Cohorts: Cases, Hospitalizations, and Deaths
+This dataset is a csv file. There were empty values and ill-formatted values for the
+extract_date and specimen_date columns. I used pandas to drop rows that had invalid values
+for these columns. The number of confirmed cases were aggregated and summed using the 
+specimen_date. The data was then filtered by year 2020. 
+
+Legal Operating Businesses:
+This dataset was download from NYC Open Data site. here were empty values and ill-formatted 
+values for the 'License Expiration Date' and 'License Creation Date' columns. I used pandas 
+to drop rows that had invalid values for these columns. Data from 2019 and 2020 were
+separated into two different panda DataFrames.
+
+S&P500 Daily Open & Close price:
+This dataset was download from polygon.io. I had to create an account on the polygon web
+site. I had to obtain an API key to use for all polygon queries. Polygon has implemented 
+rate limiting for its REST API. I constructed a URL and queried the REST API. I saved the data as a json file and used pandas to read the json data into a pandas DataFrame.
+
+
