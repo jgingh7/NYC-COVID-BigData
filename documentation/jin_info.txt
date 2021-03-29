@@ -1,0 +1,38 @@
+Project description:
+I have chosen to focus on the impact of COVID-19 to crime in NYC, especially hate-crime.
+I may be using population growth and total crime rate change to get a more deeper understanding
+of how COVID-19 had impacted hate-crime.
+
+List of datasets:
+1. Name: COVID-19 Outcomes by Testing Cohorts: Cases, Hospitalizations, and Deaths
+   Source: https://data.cityofnewyork.us/Health/COVID-19-Outcomes-by-Testing-Cohorts-Cases-Hospita/cwmx-mvra
+   Description: The dataset shows outcomes (confirmed cases, hospitalizations, and deaths) for cohorts defined by each date of specimen collection (specimen_date).
+
+2. Name: NYPD_Hate_Crimes
+   Source: https://auctus.vida-nyu.org/?q=%7B%22query%22%3A%22nyc%20crime%22%2C%22filters%22%3A%5B%5D%7D
+   Description: Details of hate-crime incidents that took place from 2019 to 2020
+
+3-a. Name: non-seven-major-felony-offenses-by-precinct-2000-2020
+     Source: https://www1.nyc.gov/site/nypd/stats/crime-statistics/historical.page
+     Description: Crime incident (non 7 major) numbers from 2000-2020 divided by precinct and category
+
+3-b. Name: seven-major-felony-offenses-by-precinct-2000-2020
+     Source: https://www1.nyc.gov/site/nypd/stats/crime-statistics/historical.page
+     Description: Crime incident (7 major) numbers from 2000-2020 divided by precinct and category
+
+4. Name: Total poluation change
+   Source: https://en.wikipedia.org/wiki/Demographic_history_of_New_York_City
+	   https://www.census.gov/quickfacts/fact/table/newyorkcitynewyork/PST045219
+   Description: Total population change in NYC
+   
+Data Cleaning and Integration:
+- NYPD_Hate_Crimes:
+  It had rows with same "Full Complaint ID" and "Arrest Id". I presume as below:
+  	no ArrestID -> no arrest
+	same FCID, different ArrestID -> different arrests for different people in same crime incidient
+	different FCID, same ArrestID -> 2 complaint calls for the same incident
+  However, this information was not needed for me at the moment, so I decided to delete duplicate rows.
+  I tried using OpenRefine to cleanse the data, but for some reason, dealing with duplicates did not work.
+  I implemented data cleansing code in Juypter instead.
+- (non)seven-major-felony-offenses-by-precinct-2000-2020: The two data had already been set as a table,
+       so it was hard to code to get the numbers I need. I used excel sum to get the numbers I needed.
